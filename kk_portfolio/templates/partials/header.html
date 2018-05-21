@@ -1,4 +1,51 @@
+<!--
 {# Simple search form, remove from search index #}
 <form action="/search-results/" method="get" data-search-index="false">
  <input type="text" name="q" placeholder="Search" id="tipue_search_input" />
 </form>
+-->
+<!--MOBILE NAVIGATION-->
+<div id="mobilenav">
+  <div class="title">
+    <a href="/">
+        <h1>Katharine Kjerland</h1>
+      </a>
+  </div>
+
+  <div class="mobilenav">
+    <div class="topnav" id="myTopnav">
+        <a href="/" class="mobiletitle" >
+            <h1>Katharine Kjerland</h1>
+          </a>
+    	  <a class="mobilelinks" href="/">Portfolio</a>
+    	  <a  href="/measurements">Measurements</a>
+    	  <a  href="/contact">Contact</a>
+    	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    	    &#9776;
+    	  </a>
+    </div>
+  </div>
+</div>
+
+  <script>
+  function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+          x.className += " responsive";
+      } else {
+          x.className = "topnav";
+      }
+  }
+  </script>
+
+<!--DESKTOP NAVIGATION--> 
+<div id="desktopnav">
+
+  <div class="navigation-1">
+    <a href="/">Katharine Kjerland</a>
+    <a href="/">Portfolio</a>
+    <a href="/measurements">Measurements</a>
+    <a href="/contact">Contact</a>
+  </div>
+  
+</div>
