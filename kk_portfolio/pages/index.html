@@ -22,22 +22,40 @@
 	<div class="container-fluid">
 	
 	<div class="header">
-	{% block header %}
-        {% include "templates/partials/header.html" %}
-    {% endblock %}
+		{% block header %}
+	        {% include "templates/partials/header.html" %}
+	    {% endblock %}
+    </div>
+
+    <div class="indexcontent col-sm-3 offset-sm-3 marquee">
+    	<div class="indexlist indextext">
+    		{% for row in cms.portfolio_2.clientlist %}
+    		<p>
+                <a href="/portfolio_2/#{{ row.anchor }}">
+                	{{ row.name }}
+                </a>
+            </p>
+      		{% endfor %}
+    	</div>
+    </div>
+
+    <div class="marquee">
+    	;lksanjd;lkjas;dlkfj;sldkjf;lsdkjf
     </div>
 
     <div class="hpimages clearfix">
-	  <div class="bg-slideshow col-sm-8 col-sm-offset-2">
+	  <div class="bg-slideshow col-sm-8 col-md-10 col-lg-9 offset-lg-3 ">
 	    {% for image in cms.homepage.gallery %}
-	      <img src="{{ image|imageSize(2000, 2000) }}">
+	      <img class="hp-asset" src="{{ image|imageSize(2000, 2000) }}">
 	      {{ image.caption }}
 	    {% endfor %}
 	  </div>
 	 </div>
 
 	 </div>
-
-
 </div>
+
+
+ <script src="marquee3k.js"></script>
+
 {% endblock %}

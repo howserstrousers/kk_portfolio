@@ -1,0 +1,120 @@
+{# ------------------------------------------------------- #}
+{# ONE OFF VIEW portfolio_2 #}
+{# This page can use any data from http:localhost:2000/cms/#/form/portfolio_2/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+{# This sets our page <title>. It will append this portfolio_2's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ cms.portfolio_2.name }}{% endblock %}
+{% block content %}
+  <!--
+  <h1>{{ cms.portfolio_2.name }}</h1>
+  -->
+<div id="portfolio">
+
+  <div class="container-fluid">
+
+    <div class="header">
+      <div id="mobilenav">
+        <div class="title">
+          <a href="/">
+              <h1>Katharine Kjerland</h1>
+            </a>
+        </div>
+
+        <div class="mobilenav">
+          <div class="topnav" id="myTopnav">
+              <a href="/" class="mobiletitle" >
+                  <h1>Katharine Kjerland</h1>
+                </a>
+              <a class="mobilelinks" href="/portfolio_2">Portfolio</a>
+              <a  href="/measurements">Measurements</a>
+              <a  href="/contact">Contact</a>
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                &#9776;
+              </a>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+      </script>
+
+      <!--DESKTOP NAVIGATION--> 
+      <div id="desktopnav">
+
+        <div class="row navigation-1 container-fluid">
+          <a class="col-sm-3 desktitle" href="/">Katharine Kjerland</a>
+          <p class="col-sm-6"></p>
+          
+          <div class="col-sm-2">
+          <a class="navlink pnav">Measurements</a>
+              <div class="sectiontext pinfo">
+                {{ cms.measurements.wysiwyg_text|safe }}
+              </div>
+          <a class="navlink pnav"style="padding-top:50%">Contact</a>
+              <div class="sectiontext pinfo">
+              {{ cms.contact.wysiwyg_text|safe }}
+              </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  <div class="carouselwrapper col-xs-12 col-lg-5">
+    
+    <div class="ptitle">
+
+      <div class="pdrop">
+        <p>Portfolio</p>
+      </div>
+
+      {% for row in cms.portfolio_2.clientlist %}
+            <div class="plist">
+                <a href="#{{ row.anchor }}">{{ row.name }}</a>
+            </div>
+      {% endfor %}
+      
+    </div>
+
+    {% for row in cms.portfolio_2.portfolio %}
+    <a name="{{ row.anchor }}">
+        <div class="carousel_container col-xs-12"> 
+              <div class="prev_next clearfix">
+              </div>
+                {% for image in row.images %}
+                  <div class="carousel_image col-xs-12"> 
+                      <img src="{{ image|imageSize(2000, 2000) }}">
+                  </div>
+                {% endfor %}
+        </div>
+
+        <div class="portfolio_info"> 
+              <div class="client">
+                {{ row.client }}
+              </div>
+
+              <div class="portfolio_description">
+                {{ row.description|safe }}
+              </div>
+        </div>
+    </a>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

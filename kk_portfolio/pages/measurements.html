@@ -15,11 +15,12 @@
 <div id="measurements">
 	<div class="container-fluid">
 		<div class="header">
-		{% block header %}
-	        {% include "templates/partials/header.html" %}
-	    {% endblock %}
+			{% block header %}
+		        {% include "templates/partials/header.html" %}
+		    {% endblock %}
 	    </div>
-	  <div class="sectioncontent">
+
+	  <div class="sectioncontent col-lg-3 offset-lg-6">
 	    <div class="sectiontitle">
 	      {{ cms.measurements.name }}
 	    </div>
