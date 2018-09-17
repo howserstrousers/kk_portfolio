@@ -20,29 +20,48 @@
 {% block content %}
 <div id="indexcontainer">
 	<div class="container-fluid">
+
+	<div id="mobilenav">
+	  <div class="title">
+	    <a href="/">
+	        <h1>Katharine Kjerland</h1>
+	      </a>
+	  </div>
+
+	  <div class="mobilenav">
+	    <div class="topnav" id="myTopnav">
+	        <a href="/" class="mobiletitle" >
+	            <h1>Katharine Kjerland</h1>
+	          </a>
+	    	  <a class="mobilelinks" href="/portfolio_2">Portfolio</a>
+	    	  <a  href="/measurements">Measurements</a>
+	    	  <a  href="/contact">Contact</a>
+	    	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	    	     &#9776;
+	    	  </a>
+	    </div>
+	  </div>
+	</div>
+
+	<script>
+	  function myFunction() {
+	      var x = document.getElementById("myTopnav");
+	      if (x.className === "topnav") {
+	          x.className += " responsive";
+	      } else {
+	          x.className = "topnav";
+	      }
+	  }
+	</script>
 	
-	<div class="header">
-		{% block header %}
-	        {% include "templates/partials/header.html" %}
-	    {% endblock %}
-    </div>
 
-    <div class="indexcontent col-sm-3 offset-sm-3 marquee">
-    	<div class="indexlist indextext">
-    		{% for row in cms.portfolio_2.clientlist %}
-    		<p>
-                <a href="/portfolio_2/#{{ row.anchor }}">
-                	{{ row.name }}
-                </a>
-            </p>
-      		{% endfor %}
-    	</div>
-    </div>
-
-    <div class="marquee">
-    	;lksanjd;lkjas;dlkfj;sldkjf;lsdkjf
-    </div>
-
+	<div id="desktopnav">
+	  <div class="row navigation-1 container-fluid">
+	    <a class="col-sm-3 desktitle" href="/homepage">Katharine Kjerland</a>
+	  </div>
+  	</div>
+    
+    <a href="/homepage">
     <div class="hpimages clearfix">
 	  <div class="bg-slideshow col-sm-8 col-md-10 col-lg-9 offset-lg-3 ">
 	    {% for image in cms.homepage.gallery %}
@@ -51,11 +70,9 @@
 	    {% endfor %}
 	  </div>
 	 </div>
+	</a>
 
 	 </div>
 </div>
-
-
- <script src="marquee3k.js"></script>
 
 {% endblock %}

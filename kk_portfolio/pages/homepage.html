@@ -12,8 +12,52 @@
 {# This sets our page <title>. It will append this homepage's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ cms.homepage.name }}{% endblock %}
 {% block content %}
-    {% for image in cms.homepage.gallery %}
-      <img src="{{ image|imageSize(2000, 2000) }}">
-      {{ image.caption }}
-    {% endfor %}
+ <div id="indexcontainer">
+	<div class="container-fluid">
+	
+	<div class="header">
+		{% block header %}
+	        {% include "templates/partials/header.html" %}
+	    {% endblock %}
+    </div>
+
+    <div class="sectioncontent col-lg-3 offset-lg-3 ">
+
+      <div class="sectiontitle">
+          Portfolio
+        </div>
+
+    	<div class="indexlist sectiontext marquee">
+    		{% for row in cms.portfolio_2.clientlist %}
+                <a href="/portfolio_2/#{{ row.anchor }}">
+                	{{ row.name }}
+                </a>
+      		{% endfor %}
+    	</div>
+    </div>
+
+    <div class="sectioncontent col-lg-3 offset-lg-6">
+        <div class="sectiontitle">
+          {{ cms.measurements.name }}
+        </div>
+
+        <div class="sectiontext hproll marquee">
+              <a href="/measurements">{{ cms.measurements.wysiwyg_text|safe }}
+              </a>
+        </div>
+    </div>
+
+    <div class="sectioncontent col-lg-3 offset-lg-9">
+      <div class="sectiontitle">
+        <a href="/measurements">
+            {{ cms.contact.name }}
+        </a>
+      </div>
+
+      <div class="sectiontext hproll marquee">
+        {{ cms.contact.wysiwyg_text|safe }}
+      </div>
+    </div>
+
+ </div>
 {% endblock %}

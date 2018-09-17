@@ -10,11 +10,8 @@
 {# http://www.webhook.com/docs/template-inheritance-blocks/ #}
 {% extends "templates/partials/base.html" %}
 {# This sets our page <title>. It will append this portfolio_2's name to the site title defined in base.html #}
-{% block title %}{% parent %} - {{ cms.portfolio_2.name }}{% endblock %}
+{% block title %}{% parent %} - Portfolio{% endblock %}
 {% block content %}
-  <!--
-  <h1>{{ cms.portfolio_2.name }}</h1>
-  -->
 <div id="portfolio">
 
   <div class="container-fluid">
@@ -22,7 +19,7 @@
     <div class="header">
       <div id="mobilenav">
         <div class="title">
-          <a href="/">
+          <a href="/homepage">
               <h1>Katharine Kjerland</h1>
             </a>
         </div>
@@ -57,7 +54,7 @@
       <div id="desktopnav">
 
         <div class="row navigation-1 container-fluid">
-          <a class="col-sm-3 desktitle" href="/">Katharine Kjerland</a>
+          <a class="col-sm-3 desktitle" href="/homepage">Katharine Kjerland</a>
           <p class="col-sm-6"></p>
           
           <div class="col-sm-2">

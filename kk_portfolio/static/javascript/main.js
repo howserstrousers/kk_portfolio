@@ -60,6 +60,7 @@ if ( $(window).width() < 1024) {
   
 }
 
+/*
 if ( $(window).width() > 1024) {
 
   $(".hpimages").click(function () {
@@ -72,6 +73,7 @@ if ( $(window).width() > 1024) {
     $(".indexlist").css("display", "block");
   });
 }
+*/
 
 $(document).ready(function() {
   $(".pdrop").click(function(){
@@ -101,25 +103,6 @@ $(document).ready(function() {
         });
 });
 
-
-$(document).ready(function() {
-    var baseTop = $("div.ptitle").offsetTop();
-    $(window).scroll(function () {
-        var top = $(window).scrollTop();
-        if (top >= baseTop) {
-            $("div.ptitle").css({
-                "position": "fixed",
-                    "top": "0px"
-            });
-        } else if (top < baseTop) {
-            $("div.ptitle").css({
-                "position": "",
-                    "top": ""
-            });
-        }
-    });
-});
-
 $(function(){
   $(window).scroll(function(){
     $.PreImageLoad();
@@ -127,5 +110,10 @@ $(function(){
 });
 
 $(document).ready(function () {
-        $('.marquee').marquee();
+        $('.marquee').marquee({
+          allowCss3Support:true,
+          pauseOnHover:true,
+          duration:6000,
+
+        });
 });
